@@ -1,0 +1,63 @@
+{
+  "intents": [
+    {
+      "intent": "LoadSequenceIntent",
+      "slots": [
+        {
+          "name": "SequenceName",
+          "type": "LIST_OF_SEQUENCE_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "UnloadSequenceIntent",
+      "slots": [
+        {
+          "name": "SequenceName",
+          "type": "LIST_OF_SEQUENCE_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "AddActionIntent",
+      "slots": [
+        {
+          "name": "SequenceName",
+          "type": "LIST_OF_SEQUENCE_NAMES"
+        },
+        {
+          "name": "ActionType",
+          "type": "LIST_OF_ACTION_TYPES"
+        }
+      ]
+    },
+    {
+      "intent": "RemoveActionIntent",
+      "slots": [
+        {
+          "name": "SequenceName",
+          "type": "LIST_OF_SEQUENCE_NAMES"
+        },
+        {
+          "name": "ActionType",
+          "type": "LIST_OF_ACTION_TYPES"
+        }
+      ]
+    },
+    {
+      "intent": "ResetSequencesIntent"
+    },
+    {
+      "intent": "DescribeSequencesIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

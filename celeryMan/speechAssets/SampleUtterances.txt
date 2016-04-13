@@ -1,0 +1,91 @@
+ResetSequencesIntent clear
+ResetSequencesIntent clear sequences
+ResetSequencesIntent clear all
+ResetSequencesIntent clear all sequences
+ResetSequencesIntent clear those sequences
+ResetSequencesIntent clear the sequences
+ResetSequencesIntent erase
+ResetSequencesIntent erase sequences
+ResetSequencesIntent erase all
+ResetSequencesIntent erase all sequences
+ResetSequencesIntent erase those sequences
+ResetSequencesIntent erase the sequences
+ResetSequencesIntent forget
+ResetSequencesIntent forget sequences
+ResetSequencesIntent forget all
+ResetSequencesIntent forget all sequences
+ResetSequencesIntent forget those sequences
+ResetSequencesIntent forget the sequences
+ResetSequencesIntent reset
+ResetSequencesIntent reset sequences
+ResetSequencesIntent reset all
+ResetSequencesIntent reset all sequences
+ResetSequencesIntent reset those sequences
+ResetSequencesIntent reset the sequences
+ResetSequencesIntent stop
+ResetSequencesIntent stop sequences
+ResetSequencesIntent stop all
+ResetSequencesIntent stop all sequences
+ResetSequencesIntent stop those sequences
+ResetSequencesIntent stop the sequences
+
+DescribeSequencesIntent what sequences are running
+DescribeSequencesIntent which sequences are running
+DescribeSequencesIntent what sequences are loaded up
+DescribeSequencesIntent which sequences are loaded up
+DescribeSequencesIntent what sequences are loaded
+DescribeSequencesIntent which sequences are loaded
+DescribeSequencesIntent what is happening
+
+LoadSequenceIntent load up {SequenceName} please
+LoadSequenceIntent load up {SequenceName}
+LoadSequenceIntent boot up {SequenceName} please
+LoadSequenceIntent boot up {SequenceName}
+LoadSequenceIntent load {SequenceName} please
+LoadSequenceIntent load {SequenceName}
+LoadSequenceIntent load sequence {SequenceName} please
+LoadSequenceIntent load sequence {SequenceName}
+LoadSequenceIntent add {PlayerName} please
+LoadSequenceIntent add {PlayerName}
+LoadSequenceIntent add sequence {PlayerName} please
+LoadSequenceIntent add sequence {PlayerName}
+
+UnloadSequenceIntent unload {SequenceName} please
+UnloadSequenceIntent unload {SequenceName}
+UnloadSequenceIntent unload sequence {SequenceName} please
+UnloadSequenceIntent unload sequence {SequenceName}
+UnloadSequenceIntent delete {SequenceName} please
+UnloadSequenceIntent delete {SequenceName}
+UnloadSequenceIntent delete sequence {SequenceName} please
+UnloadSequenceIntent delete sequence {SequenceName}
+UnloadSequenceIntent forget {PlayerName} please
+UnloadSequenceIntent forget {PlayerName}
+UnloadSequenceIntent forget sequence {PlayerName} please
+UnloadSequenceIntent forget sequence {PlayerName}
+UnloadSequenceIntent remove {SequenceName} please
+UnloadSequenceIntent remove {SequenceName}
+UnloadSequenceIntent remove sequence {PlayerName} please
+UnloadSequenceIntent remove sequence {PlayerName}
+
+AddActionIntent give {SequenceName} {ActionType}
+AddActionIntent give {SequenceName} an {ActionType}
+AddActionIntent give {SequenceName} a {ActionType}
+AddActionIntent give {SequenceName} {ActionType} please
+AddActionIntent give {SequenceName} an {ActionType} please
+AddActionIntent give {SequenceName} a {ActionType} please
+AddActionIntent can I get a {ActionType} on {SequenceName}
+AddActionIntent can I get a {ActionType} of {SequenceName}
+AddActionIntent can I get a {ActionType} for {SequenceName}
+AddActionIntent can I get a {ActionType} on {SequenceName} please
+AddActionIntent can I get a {ActionType} of {SequenceName} please
+AddActionIntent can I get a {ActionType} for {SequenceName} please
+AddActionIntent could I see a {ActionType} on {SequenceName}
+AddActionIntent could I see a {ActionType} of {SequenceName}
+AddActionIntent could I see a {ActionType} for {SequenceName}
+AddActionIntent could I see a {ActionType} on {SequenceName} please
+AddActionIntent could I see a {ActionType} of {SequenceName} please
+AddActionIntent could I see a {ActionType} for {SequenceName} please
+AddActionIntent could you kick up the {ActionType} on {SequenceName}
+AddActionIntent could you kick up the {ActionType} for {SequenceName}
+AddActionIntent could you kick up the {ActionType} on {SequenceName} please
+AddActionIntent could you kick up the {ActionType} for {SequenceName} please
