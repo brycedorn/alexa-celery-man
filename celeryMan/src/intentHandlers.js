@@ -14,41 +14,38 @@ var textHelper = require('./textHelper'),
 
 var registerIntentHandlers = function (intentHandlers, skillContext) {
     intentHandlers.ResetSequencesIntent = function (intent, session, response) {
-        // Remove all sequences
         storage.newSession(session).save(function () {
             response.ask('What will your first sequence of the day be?',
-                    'Please tell me which sequence you would like to see first.');
+                'Please tell me which sequence you would like to see first.');
         });
     };
 
     intentHandlers.AddSequenceIntent = function (intent, session, response) {
-        // Add a sequence
-        var newSequenceName = textHelper.getSequenceName(intent.slots.SequenceName.value);
+        var newSequenceName = textHelper.getSequenceName(intent.slots.SequenceName.value),
+            newBetaSequenceName = (newSequenceName === 'tayne');
         if (!newSequenceName) {
-            response.ask('Ok. What sequence would you like to add?', 'What sequence would you like to add?');
+            response.ask('I\'m sorry, that isn\'t in my list of sequences.', 'What sequence would you like to add?');
             return;
         }
         storage.loadSession(session, function (currentSession) {
-            var speechOutput,
-                reprompt;
-            if (currentSession.data.actions[newSequenceName] !== '') {
-                speechOutput = newSequenceName + ' is already loaded.';
-                if (skillContext.needMoreHelp) {
-                    response.ask(speechOutput + ' What else?', 'What else?');
+            var speechOutput, reprompt;
+            if (currentSession.data.sequences.indexOf(newSequenceName) !== -1) {
+                speechOutput = newSequenceName + ' has already been loaded.';
+            } else {
+                if (!newBetaSequenceName) { 
+                    speechOutput = newSequenceName + ' has been loaded. ';
                 } else {
-                    response.tell(speechOutput);
+                    speechOutput = ' Hi I\'m Tayne. I can\'t wait to entertain you. ';
                 }
-                return;
+                currentSession.data.sequences.push(newSequenceName);
+                currentSession.data.actions[newSequenceName] = '';
             }
-            speechOutput = newSequenceName + ' has been loaded. ';
-            currentSession.data.sequences.push(newSequenceName);
-            currentSession.data.actions[newSequenceName] = '';
             if (skillContext.needMoreHelp) {
-                if (currentSession.data.sequences.length == 1) {
-                    speechOutput += 'You can say, I am Done Adding Sequences. Now who\'s your next sequence?';
+                if (currentSession.data.sequences.length === 3) {
+                    speechOutput += 'You\'re currently running all available sequences.';
                     reprompt = textHelper.nextHelp;
                 } else {
-                    speechOutput += 'What other sequence would you like to add?';
+                    speechOutput += 'What other sequences would you like to add?';
                     reprompt = textHelper.nextHelp;
                 }
             }
@@ -63,9 +60,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     };
 
     intentHandlers.RemoveSequenceIntent = function (intent, session, response) {
-        // Delete a sequence, ask additional question if slot values are missing.
         var SequenceName = textHelper.getSequenceName(intent.slots.SequenceName.value);
-
         if (!SequenceName) {
             response.ask('Sorry, I didn\'t hear the sequence name, please say that again', 'Please say the name of the sequence again');
             return;
@@ -84,12 +79,12 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
                 }
             }
             if (!targetSequence) {
-                response.ask('Sorry, ' + SequenceName + ' has not been loaded. What else?', SequenceName + ' has not been loaded. What else?');
+                response.ask('Sorry, ' + SequenceName + ' has not been loaded yet.', SequenceName + ' has not been loaded yet.');
                 return;
             }
 
             currentSession.data.actions[targetSequence] = '';
-            speechOutput += 'Deleted ' + SequenceName + '. ';
+            speechOutput += 'Stopped ' + SequenceName + '. ';
             
             currentSession.save(function () {
                 response.tell(speechOutput);
@@ -98,7 +93,6 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     };
 
     intentHandlers.AddActionIntent = function (intent, session, response) {
-        // Add an action to a sequence, ask additional question if slot values are missing.
         var SequenceName = textHelper.getSequenceName(intent.slots.SequenceName.value),
             ActionType = textHelper.getActionType(intent.slots.ActionType.value);
         if (!SequenceName) {
@@ -106,13 +100,13 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
             return;
         }
         if (!ActionType) {
-            response.ask('Sorry, I didn\'t hear the action you requested, please say that again', 'Please say the action again');
+            response.ask('Sorry, I didn\'t quite get what you wanted, please say that again', 'Please say that again');
             return;
         }
         storage.loadSession(session, function (currentSession) {
             var targetSequence, speechOutput = '';
             if (currentSession.data.sequences.length < 1) {
-                response.ask('Sorry, no sequences are running yet, what can I do for you?', 'What can I do for you?');
+                response.ask('Sorry, no sequences are running yet, what would you like to do?', 'What can I do for you?');
                 return;
             }
             for (var i = 0; i < currentSession.data.sequences.length; i++) {
@@ -122,7 +116,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
                 }
             }
             if (!targetSequence) {
-                response.ask('Sorry, ' + SequenceName + ' has not been loaded. What else?', SequenceName + ' has not been loaded. What else?');
+                response.ask('Sorry, ' + SequenceName + ' has not been loaded yet.', SequenceName + ' has not been loaded.');
                 return;
             }
 
@@ -140,7 +134,9 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
         // the action (if any) associated with each.
         storage.loadSession(session, function (currentSession) {
             var speechOutput = '',
-                description = '';
+                description = '',
+                sequenceAction,
+                genericRunningString = ' is currently running. ';
             if (currentSession.data.sequences.length === 0) {
                 response.tell('There are no sequences currently running.');
                 return;
@@ -149,14 +145,12 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
                 sequenceAction = currentSession.data.actions[sequence];
 
                 if (sequenceAction) {
-                    speechOutput += sequence + ' is currently doing a ' + sequenceAction;
-                    description  += sequence + ': ' + sequenceAction;
+                    speechOutput += sequence + ' is currently doing a ' + sequenceAction + '. ';
+                    description  += sequence + ': ' + sequenceAction + '. ';
                 } else {
-                    speechOutput += sequence + ' is currently loaded';
-                    description  += sequence + ' is currently loaded';
+                    speechOutput += sequence + genericRunningString;
+                    description  += sequence + genericRunningString;
                 }
-                speechOutput += '. ';
-                description  += '. ';
             });
             response.tellWithCard(speechOutput, "Description", description);
         });
@@ -173,7 +167,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
 
     intentHandlers['AMAZON.CancelIntent'] = function (intent, session, response) {
         if (skillContext.needMoreHelp) {
-            response.tell('Okay. I\'m ready to start running some more sequences whenever you are.');
+            response.tell('Sequences now running in background. Say, Load up Celery Man to play some more sequences.');
         } else {
             response.tell('');
         }
@@ -181,7 +175,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
 
     intentHandlers['AMAZON.StopIntent'] = function (intent, session, response) {
         if (skillContext.needMoreHelp) {
-            response.tell('Okay. I\'m ready to start running some more sequences whenever you are.');
+            response.tell('Sequences now running in background. Say, Load up Celery Man to play some more sequences.');
         } else {
             response.tell('');
         }

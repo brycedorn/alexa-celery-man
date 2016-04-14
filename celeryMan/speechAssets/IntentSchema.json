@@ -1,7 +1,7 @@
 {
   "intents": [
     {
-      "intent": "LoadSequenceIntent",
+      "intent": "AddSequenceIntent",
       "slots": [
         {
           "name": "SequenceName",
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "intent": "UnloadSequenceIntent",
+      "intent": "RemoveSequenceIntent",
       "slots": [
         {
           "name": "SequenceName",
@@ -20,19 +20,6 @@
     },
     {
       "intent": "AddActionIntent",
-      "slots": [
-        {
-          "name": "SequenceName",
-          "type": "LIST_OF_SEQUENCE_NAMES"
-        },
-        {
-          "name": "ActionType",
-          "type": "LIST_OF_ACTION_TYPES"
-        }
-      ]
-    },
-    {
-      "intent": "RemoveActionIntent",
       "slots": [
         {
           "name": "SequenceName",

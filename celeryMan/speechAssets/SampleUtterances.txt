@@ -37,35 +37,48 @@ DescribeSequencesIntent what sequences are loaded
 DescribeSequencesIntent which sequences are loaded
 DescribeSequencesIntent what is happening
 
-LoadSequenceIntent load up {SequenceName} please
-LoadSequenceIntent load up {SequenceName}
-LoadSequenceIntent boot up {SequenceName} please
-LoadSequenceIntent boot up {SequenceName}
-LoadSequenceIntent load {SequenceName} please
-LoadSequenceIntent load {SequenceName}
-LoadSequenceIntent load sequence {SequenceName} please
-LoadSequenceIntent load sequence {SequenceName}
-LoadSequenceIntent add {PlayerName} please
-LoadSequenceIntent add {PlayerName}
-LoadSequenceIntent add sequence {PlayerName} please
-LoadSequenceIntent add sequence {PlayerName}
+AddSequenceIntent load up {SequenceName} please
+AddSequenceIntent load up {SequenceName}
+AddSequenceIntent boot up {SequenceName} please
+AddSequenceIntent boot up {SequenceName}
+AddSequenceIntent load {SequenceName} please
+AddSequenceIntent load {SequenceName}
+AddSequenceIntent load sequence {SequenceName} please
+AddSequenceIntent load sequence {SequenceName}
+AddSequenceIntent add {SequenceName} please
+AddSequenceIntent add {SequenceName}
+AddSequenceIntent add sequence {SequenceName} please
+AddSequenceIntent add sequence {SequenceName}
 
-UnloadSequenceIntent unload {SequenceName} please
-UnloadSequenceIntent unload {SequenceName}
-UnloadSequenceIntent unload sequence {SequenceName} please
-UnloadSequenceIntent unload sequence {SequenceName}
-UnloadSequenceIntent delete {SequenceName} please
-UnloadSequenceIntent delete {SequenceName}
-UnloadSequenceIntent delete sequence {SequenceName} please
-UnloadSequenceIntent delete sequence {SequenceName}
-UnloadSequenceIntent forget {PlayerName} please
-UnloadSequenceIntent forget {PlayerName}
-UnloadSequenceIntent forget sequence {PlayerName} please
-UnloadSequenceIntent forget sequence {PlayerName}
-UnloadSequenceIntent remove {SequenceName} please
-UnloadSequenceIntent remove {SequenceName}
-UnloadSequenceIntent remove sequence {PlayerName} please
-UnloadSequenceIntent remove sequence {PlayerName}
+AddBetaSequenceIntent load up {SequenceName} please
+AddBetaSequenceIntent load up {SequenceName}
+AddBetaSequenceIntent boot up {SequenceName} please
+AddBetaSequenceIntent boot up {SequenceName}
+AddBetaSequenceIntent load {SequenceName} please
+AddBetaSequenceIntent load {SequenceName}
+AddBetaSequenceIntent load sequence {SequenceName} please
+AddBetaSequenceIntent load sequence {SequenceName}
+AddBetaSequenceIntent add {SequenceName} please
+AddBetaSequenceIntent add {SequenceName}
+AddBetaSequenceIntent add sequence {SequenceName} please
+AddBetaSequenceIntent add sequence {SequenceName}
+
+RemoveSequenceIntent unload {SequenceName} please
+RemoveSequenceIntent unload {SequenceName}
+RemoveSequenceIntent unload sequence {SequenceName} please
+RemoveSequenceIntent unload sequence {SequenceName}
+RemoveSequenceIntent delete {SequenceName} please
+RemoveSequenceIntent delete {SequenceName}
+RemoveSequenceIntent delete sequence {SequenceName} please
+RemoveSequenceIntent delete sequence {SequenceName}
+RemoveSequenceIntent forget {SequenceName} please
+RemoveSequenceIntent forget {SequenceName}
+RemoveSequenceIntent forget sequence {SequenceName} please
+RemoveSequenceIntent forget sequence {SequenceName}
+RemoveSequenceIntent remove {SequenceName} please
+RemoveSequenceIntent remove {SequenceName}
+RemoveSequenceIntent remove sequence {SequenceName} please
+RemoveSequenceIntent remove sequence {SequenceName}
 
 AddActionIntent give {SequenceName} {ActionType}
 AddActionIntent give {SequenceName} an {ActionType}

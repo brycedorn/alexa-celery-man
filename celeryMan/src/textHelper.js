@@ -12,26 +12,34 @@
 var textHelper = (function () {
     return {
         completeHelp: 'Here\'s some things you can say,'
-        + ' add celery man.'
-        + ' give tayne a hat wobble.'
-        + ' what sequences are running'
-        + ' clear sequences'
-        + ' reset',
+            + ' load up celery man.'
+            + ' give tayne a hat wobble.'
+            + ' what sequences are running?'
+            + ' clear sequences.'
+            + ' reset.',
         nextHelp: 'You can give a sequence an action, add a sequence, get a description of the sequences running, or say help. What would you like?',
 
         getSequenceName: function (recognizedSequenceName) {
             if (!recognizedSequenceName) {
                 return undefined;
+            } else {
+                return recognizedSequenceName;
             }
-            var split = recognizedSequenceName.indexOf(' '), newSequence;
+        },
+
+        getActionType: function (recognizedActionType) {
+            if (!recognizedActionType) {
+                return undefined;
+            }
+            var split = recognizedActionType.indexOf(' '), newAction;
 
             if (split < 0) {
-                newSequence = recognizedSequenceName;
+                newAction = recognizedActionType;
             } else {
-                //the name should only contain a first name, so ignore the second part if any
-                newSequence = recognizedSequenceName.substring(0, split);
+                // The action should only be one word
+                newAction = recognizedActionType.substring(0, split);
             }
-            return newSequence;
+            return newAction;
         }
     };
 })();

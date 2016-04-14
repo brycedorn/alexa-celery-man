@@ -1,6 +1,9 @@
-# Node.js Alexa Skills Kit Samples
+# Alexa, load up Celery Man please.
 
-##Alexa Skills Kit Documentation
+###### Because someone had to do it.
+![Tayne](https://media.giphy.com/media/g52qWob95XWFi/giphy.gif)
+
+## Alexa Skills Kit Documentation
 The documentation for the Alexa Skills Kit is available on the [Amazon Apps and Services Developer Portal](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/).
 
 ## Contents

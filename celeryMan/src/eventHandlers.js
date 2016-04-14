@@ -25,7 +25,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
         storage.loadSession(session, function (currentSession) {
             var speechOutput = '',
                 reprompt;
-            if (currentSession.data.players.length === 0) {
+            if (currentSession.data.sequences.length === 0) {
                 speechOutput += 'Hello, what will your first sequence of the day be?';
                 reprompt = "Please tell me which sequence you would like to see first.";
             } else {

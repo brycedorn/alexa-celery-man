@@ -13,7 +13,7 @@ var AlexaSkill = require('./AlexaSkill'),
     eventHandlers = require('./eventHandlers'),
     intentHandlers = require('./intentHandlers');
 
-var APP_ID = undefined;//replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
+var APP_ID = "amzn1.echo-sdk-ams.app.9388e9c3-9405-4dc2-9eaf-8ee85e1f7871";
 var skillContext = {};
 
 /**
@@ -26,7 +26,6 @@ var CeleryMan = function () {
     AlexaSkill.call(this, APP_ID);
     skillContext.needMoreHelp = true;
 };
-
 
 // Extend AlexaSkill
 CeleryMan.prototype = Object.create(AlexaSkill.prototype);

@@ -164,13 +164,20 @@ Response.prototype = (function () {
                 shouldEndSession: true
             }));
         },
+        tellAndContinue: function (speechOutput) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: speechOutput,
+                shouldEndSession: false
+            }));
+        },
         tellWithCard: function (speechOutput, cardTitle, cardContent) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
                 cardTitle: cardTitle,
                 cardContent: cardContent,
-                shouldEndSession: true
+                shouldEndSession: false
             }));
         },
         ask: function (speechOutput, repromptSpeech) {
